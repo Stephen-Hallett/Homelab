@@ -6,5 +6,7 @@
     ./headless.nix
     ./desktop.nix
     ./code-server.nix
+    ./tailscale.nix
+#    ./caddy.nix
   ];
 }

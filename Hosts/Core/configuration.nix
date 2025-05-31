@@ -1,4 +1,4 @@
-{ personal, config, ... }:
+{ personal, config, pkgs, ... }:
 
 {
   imports = [ ./../../NixModules ];

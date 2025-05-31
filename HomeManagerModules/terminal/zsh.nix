@@ -8,14 +8,10 @@
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
 
-      shellAliases = let flakeDir = "~/dotfiles/nix-config";
+      shellAliases = let flakeDir = "~/Homelab";
       in {
         hms =
-          "home-manager switch --impure --flake ${flakeDir} && source ~/dotfiles/Brewfile.sh && exec zsh";
-        drs =
-          "sudo darwin-rebuild switch --flake ${flakeDir}#macbook && exec zsh";
-        drs-work =
-          "sudo darwin-rebuild switch --flake ${flakeDir}#work && exec zsh";
+          "home-manager switch --impure --flake ${flakeDir} && exec zsh";
         rb = "sudo nixos-rebuild switch --impure --flake ${flakeDir}";
 
         ".." = "z ..";
