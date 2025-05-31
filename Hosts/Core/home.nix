@@ -15,7 +15,7 @@
     packages = with pkgs; [
       git
       home-manager
-      fantasque-sans-mono
+      nerd-fonts.fantasque-sans-mono
       wget
       curl
       nerd-fonts.symbols-only

@@ -16,6 +16,7 @@
 
       disableGettingStartedOverride = true;
       disableUpdateCheck = true;
+      disableWorkspaceTrust = true;
 
       package = pkgs.vscode-with-extensions.override {
         vscode = pkgs.code-server;
@@ -27,6 +28,7 @@
           github.vscode-github-actions
           hashicorp.terraform
           jnoortheen.nix-ide
+          bbenoist.nix
           ms-azuretools.vscode-docker
           ms-toolsai.jupyter
           ms-toolsai.jupyter-keymap
