@@ -20,6 +20,8 @@
       curl
       nerd-fonts.symbols-only
       nixfmt-classic
+      neofetch
+
       nfs-utils
       usbutils
       pciutils
