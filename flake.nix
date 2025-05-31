@@ -19,8 +19,8 @@
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , nix-homebrew, proxmox-nixos, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, proxmox-nixos, ...
+    }@inputs:
     let
       inherit (self) outputs;
 
