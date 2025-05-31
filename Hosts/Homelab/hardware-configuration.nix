@@ -28,6 +28,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/mnt/proxmox" = {
+    device = "/dev/disk/by-uuid/d3bc7fa1-3a4a-46ad-83a3-50b389479cb1";
+    fsType = "ext4";
+  };
+
   fileSystems."/home/stephen/Media" = {
     device = "192.168.1.152:/mnt/Mediastack";
     fsType = "nfs";
@@ -35,7 +40,8 @@
     neededForBoot = false;
   };
 
-  systemd.tmpfiles.rules = [ "d /stephen/Media 0755 root root -" ];
+  systemd.tmpfiles.rules = [ "d /home/stephen/Media 0755 root root -" ];
+  systemd.tmpfiles.rules = [ "d /mnt/proxmox 0755 root root -" ];
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/422005eb-61eb-4721-8635-084e24da2a39"; }];

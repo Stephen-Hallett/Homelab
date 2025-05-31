@@ -53,7 +53,7 @@
     isNormalUser = true;
     description = "Stephen Hallett";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ nixos-generators ];
   };
 
   # Enable automatic login for the user.
