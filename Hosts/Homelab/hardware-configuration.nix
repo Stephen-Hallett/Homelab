@@ -34,12 +34,12 @@
     fsType = "ext4";
   };
 
-  #fileSystems."/home/stephen/Media" = {
-  #  device = "192.168.1.152:/mnt/Mediastack";
-  #  fsType = "nfs";
-  #  options = [ "defaults" "noatime" "vers=3" "_netdev" ];
-  #  neededForBoot = false;
-  #};
+  fileSystems."/home/stephen/Media" = {
+    device = "192.168.1.152:/mnt/Mediastack";
+    fsType = "nfs";
+    options = [ "defaults" "noatime" "vers=3" "_netdev" ];
+    neededForBoot = false;
+  };
 
   systemd.tmpfiles.rules = [ 
     "d /home/stephen/Media 0755 root root -" 
