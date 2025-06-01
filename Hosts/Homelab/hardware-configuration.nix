@@ -23,11 +23,11 @@
     options = [ "fmask=0077" "dmask=0077" ];
   };
 
- # fileSystems."/mnt/storage" = {
-  #  device = "/dev/disk/by-uuid/25c1ae0e-a54f-4312-9951-f91da3a81e86";
-  #  fsType = "ext4";
-  #  neededForBoot = false;
-  #};
+  fileSystems."/mnt/storage" = {
+    device = "/dev/disk/by-uuid/14af4506-c42f-4c86-8f53-cc1953a18346";
+    fsType = "ext4";
+    neededForBoot = false;
+  };
 
   fileSystems."/mnt/proxmox" = {
     device = "/dev/disk/by-uuid/d3bc7fa1-3a4a-46ad-83a3-50b389479cb1";
