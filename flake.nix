@@ -17,9 +17,15 @@
 
     # NixOS
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
+
+    # NixOS Anywhere
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, proxmox-nixos, ...
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, proxmox-nixos, disko, ...
     }@inputs:
     let
       inherit (self) outputs;
@@ -76,6 +82,16 @@
             })
 
             ./Hosts/Homelab/configuration.nix
+          ];
+        };
+
+        #nix run nixpkgs#nixos-anywhere --flake .#vm --generate-hardware-config nixos-generate-config ./Hosts/VM/hardware-configuration.nix root@IP_ADDRESS
+        vm = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            ./Hosts/VM/configuration.nix
+            ./Hosts/VM/hardware-configuration.nix
           ];
         };
       };

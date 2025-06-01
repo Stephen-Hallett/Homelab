@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }: {
   config = lib.mkIf config.nix-config.proxmox.enable {
     services.proxmox-ve.vms = {
-      "caddy" = {
-        vmid = 101;
+      caddy = {
+        vmid = 200;
         memory = 1024;
         cores = 1;
         sockets = 1;
@@ -13,10 +13,9 @@
           }
         ];
         scsi = [ { file = "ProxmoxVMs:8"; } ];
-        ide = [{
-          file = "ProxmoxVMs:iso/latest-nixos-minimal-x86_64-linux.iso";
-          media = "cdrom";
-        }];
+        cdrom = "ProxmoxVMs:iso/latest-nixos-minimal-x86_64-linux.iso";
+        bios = "ovmf";
+        onboot = true;
       };
     };
   };

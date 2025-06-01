@@ -1,21 +1,32 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports = [ # Include the results of the hardware scan.
-    ./../Core/configuration.nix
+  modulesPath,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/profiles/qemu-guest.nix")
+    ./disk-config.nix
+  ];
+  boot.loader.grub = {
+    # no need to set devices, disko will add all devices that have a EF02 partition to the list already
+    # devices = [ ];
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
+  services.openssh.enable = true;
+
+  environment.systemPackages = map lib.lowPrio [
+    pkgs.curl
+    pkgs.gitMinimal
   ];
 
-  nix-config = {
+  users.users.root.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIMdJToR98zQBYzxChvaa9FaSA7i4nnc5Fh5Hi0J8+kL stevohallett@gmail.com" 
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYAfzepBhppPySEsVJhK7seclKfChf5HXPke/ecbkwF stevohallett@gmail.com"
+  ];
 
-  };
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.extraModulePackages = with config.boot.kernelPackages; [ rtl8814au ];
-  boot.loader.grub.enable = false;
+  system.stateVersion = "25.05";
 }

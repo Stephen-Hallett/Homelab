@@ -8,7 +8,7 @@
   config = lib.mkIf config.nix-config.proxmox.enable {
     services.proxmox-ve = {
       enable = true;
-      ipAddress = "192.168.1.70";
+      ipAddress = "192.168.1.61";
     };
     networking.bridges.vmbr0.interfaces = [ "enp34s0" ];
     networking.interfaces.vmbr0.useDHCP = lib.mkDefault true;
