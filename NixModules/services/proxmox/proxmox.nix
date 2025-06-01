@@ -10,7 +10,7 @@
       enable = true;
       ipAddress = "192.168.1.70";
     };
-    networking.bridges.vmbr0.interfaces = [ "ens18" ];
+    networking.bridges.vmbr0.interfaces = [ "enp34s0" ];
     networking.interfaces.vmbr0.useDHCP = lib.mkDefault true;
     networking.firewall.allowedTCPPorts = [ 8006 ];
   };

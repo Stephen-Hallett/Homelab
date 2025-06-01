@@ -23,22 +23,23 @@
     options = [ "fmask=0077" "dmask=0077" ];
   };
 
-  fileSystems."/mnt/storage" = {
-    device = "/dev/disk/by-uuid/25c1ae0e-a54f-4312-9951-f91da3a81e86";
-    fsType = "ext4";
-  };
+ # fileSystems."/mnt/storage" = {
+  #  device = "/dev/disk/by-uuid/25c1ae0e-a54f-4312-9951-f91da3a81e86";
+  #  fsType = "ext4";
+  #  neededForBoot = false;
+  #};
 
   fileSystems."/mnt/proxmox" = {
     device = "/dev/disk/by-uuid/d3bc7fa1-3a4a-46ad-83a3-50b389479cb1";
     fsType = "ext4";
   };
 
-  fileSystems."/home/stephen/Media" = {
-    device = "192.168.1.152:/mnt/Mediastack";
-    fsType = "nfs";
-    options = [ "defaults" "noatime" "vers=3" "_netdev" ];
-    neededForBoot = false;
-  };
+  #fileSystems."/home/stephen/Media" = {
+  #  device = "192.168.1.152:/mnt/Mediastack";
+  #  fsType = "nfs";
+  #  options = [ "defaults" "noatime" "vers=3" "_netdev" ];
+  #  neededForBoot = false;
+  #};
 
   systemd.tmpfiles.rules = [ 
     "d /home/stephen/Media 0755 root root -" 
