@@ -40,8 +40,10 @@
     neededForBoot = false;
   };
 
-  systemd.tmpfiles.rules = [ "d /home/stephen/Media 0755 root root -" ];
-  systemd.tmpfiles.rules = [ "d /mnt/proxmox 0755 root root -" ];
+  systemd.tmpfiles.rules = [ 
+    "d /home/stephen/Media 0755 root root -" 
+    "d /mnt/proxmox 0755 root root -"
+  ];
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/422005eb-61eb-4721-8635-084e24da2a39"; }];
@@ -51,7 +53,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp34s0.useDHCP = lib.mkDefault true;
+  networking.interfaces.enp34s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp37s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

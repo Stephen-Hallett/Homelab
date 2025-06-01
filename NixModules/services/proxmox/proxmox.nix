@@ -1,4 +1,6 @@
 { pkgs, lib, config, ... }: {
+  imports = [./vms/caddy.nix];
+
   options = {
     nix-config.proxmox.enable = lib.mkEnableOption "enable proxmox";
   };
@@ -6,7 +8,7 @@
   config = lib.mkIf config.nix-config.proxmox.enable {
     services.proxmox-ve = {
       enable = true;
-      ipAddress = "192.168.1.72";
+      ipAddress = "192.168.1.70";
     };
     networking.bridges.vmbr0.interfaces = [ "ens18" ];
     networking.interfaces.vmbr0.useDHCP = lib.mkDefault true;
