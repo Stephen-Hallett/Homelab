@@ -6,12 +6,9 @@
   nix.settings.trusted-users = [ "root" "@wheel" ];
 
   nix-config = {
-    coding.enable = true;
-    docker.enable = true;
     fonts.enable = true;
     home-manager.enable = true;
     neovim.enable = true;
-    networking.enable = true;
     shell-config.enable = true;
   };
 
@@ -53,7 +50,11 @@
     isNormalUser = true;
     description = "Stephen Hallett";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ nixos-generators ];
+    packages = with pkgs; [ ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIMdJToR98zQBYzxChvaa9FaSA7i4nnc5Fh5Hi0J8+kL stevohallett@gmail.com" # Home WSL
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjubeyDo7u+Gt0CPTP1BpMoq41LtXFpGRbCCOjI3Wmj stevohallett@gmail.com" # Home Macbook
+    ];
   };
 
   # Enable automatic login for the user.

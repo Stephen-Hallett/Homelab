@@ -20,6 +20,9 @@
     swap.enable = true;
     steam.enable = true;
     tailscale.enable = true;
+    networking.enable = true;
+    coding.enable = true;
+    docker.enable = true;
   };
 
   # Bootloader.
