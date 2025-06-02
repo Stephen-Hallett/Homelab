@@ -23,7 +23,16 @@
       }
     ];
 
+    boot.kernel.sysctl = {
+      "net.bridge.bridge-nf-call-iptables"  = 0;
+      "net.bridge.bridge-nf-call-ip6tables" = 0;
+    };
+
     networking.firewall.allowedTCPPorts = [ 8006 ];
     networking.firewall.trustedInterfaces = [ "vmbr0" ];
+    networking.firewall.extraCommands = ''
+    iptables -A FORWARD -i vmbr0 -j ACCEPT
+    iptables -A FORWARD -o vmbr0 -j ACCEPT
+    '';
   };
 }
