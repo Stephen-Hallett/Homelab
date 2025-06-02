@@ -9,6 +9,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/profiles/qemu-guest.nix")
     ./disk-config.nix
+    ./hardware-configuration
   ];
   boot.loader.grub = {
     # no need to set devices, disko will add all devices that have a EF02 partition to the list already

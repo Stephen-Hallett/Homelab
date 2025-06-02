@@ -1,5 +1,5 @@
 { pkgs, lib, config, ... }: {
-  imports = [./vms/caddy.nix];
+  imports = [./vms/caddy/caddy.nix];
 
   options = {
     nix-config.proxmox.enable = lib.mkEnableOption "enable proxmox";
