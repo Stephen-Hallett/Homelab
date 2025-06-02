@@ -13,11 +13,17 @@
     networking.bridges.vmbr0.interfaces = [ "enp34s0" ];
     networking.interfaces.vmbr0.ipv4.addresses = [{
       address = "192.168.1.72";
-      prefixLength = 16;
+      prefixLength = 24;
     }];
-    networking.defaultGateway = "192.168.1.1";
-    networking.nameservers = [ "192.168.1.1" ];
+    networking.interfaces.vmbr0.ipv4.routes = [
+      {
+        address      = "0.0.0.0";
+        prefixLength = 0;
+        via          = "192.168.1.1";
+      }
+    ];
 
     networking.firewall.allowedTCPPorts = [ 8006 ];
+    networking.firewall.trustedInterfaces = [ "vmbr0" ];
   };
 }
