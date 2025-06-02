@@ -9,7 +9,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/profiles/qemu-guest.nix")
     ./disk-config.nix
-    ./hardware-configuration
+    ./hardware-configuration.nix
     ./../Core/configuration.nix
   ];
   boot.loader.grub = {

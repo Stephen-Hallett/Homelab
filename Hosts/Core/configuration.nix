@@ -6,9 +6,7 @@
   nix.settings.trusted-users = [ "root" "@wheel" ];
 
   nix-config = {
-    fonts.enable = true;
     home-manager.enable = true;
-    neovim.enable = true;
     shell-config.enable = true;
   };
 
@@ -54,7 +52,9 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIMdJToR98zQBYzxChvaa9FaSA7i4nnc5Fh5Hi0J8+kL stevohallett@gmail.com" # Home WSL
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjubeyDo7u+Gt0CPTP1BpMoq41LtXFpGRbCCOjI3Wmj stevohallett@gmail.com" # Home Macbook
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYAfzepBhppPySEsVJhK7seclKfChf5HXPke/ecbkwF stevohallett@gmail.com" # Homelab
     ];
+    hashedPassword="$6$J4gYl8oepiSEZTFi$VReuvn2W7NDCLKXQjLjWnhm2gaDhYnvOYt9g2c.f6YNB2CwwtGR.FFoiLES4buTPuD.ONYj5tVW7/DrGI1sby1";
   };
 
   # Enable automatic login for the user.

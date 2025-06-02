@@ -86,16 +86,25 @@
         };
 
         # For first time running nixos-anywhere run the following to generate a config
-        #nix run nixpkgs#nixos-anywhere -- --flake .#vm --generate-hardware-config nixos-generate-config ./Hosts/VM/hardware-configuration.nix root@IP_ADDRESS
-        
-        # For subsequent runs where you don't need to generate a hardware config, run
-        #nix run nixpkgs#nixos-anywhere -- --flake /home/stephen/Homelab#vm root@IP_ADDRESS
+        #nix run nixpkgs#nixos-anywhere -- --flake /home/stephen/Homelab#vm --generate-hardware-config nixos-generate-config ./Hosts/VM/hardware-configuration.nix root@IP_ADDRESS
         vm = nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
           system = "x86_64-linux";
           modules = [
+            proxmox-nixos.nixosModules.proxmox-ve
             disko.nixosModules.disko
             ./Hosts/VM/configuration.nix
-            ./Hosts/VM/hardware-configuration.nix
+          ];
+        };
+
+        # sudo nixos-rebuild switch --target-host stephen@192.168.1.79 --use-remote-sudo --impure --flake ~/Homelab#caddy
+        caddy = nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          system = "x86_64-linux";
+          modules = [
+            proxmox-nixos.nixosModules.proxmox-ve
+            disko.nixosModules.disko
+            ./NixModules/services/proxmox/vms/caddy/configuration.nix
           ];
         };
       };

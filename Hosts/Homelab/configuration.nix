@@ -23,6 +23,8 @@
     networking.enable = true;
     coding.enable = true;
     docker.enable = true;
+    fonts.enable = true;
+    neovim.enable = true;
   };
 
   # Bootloader.
