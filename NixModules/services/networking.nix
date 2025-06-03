@@ -4,7 +4,7 @@
   };
 
   config = lib.mkIf config.nix-config.networking.enable {
-    networking.networkmanager.enable = true;
+    networking.networkmanager.enable = false;
     networking.enableIPv6 = false;
     networking.networkmanager.wifi.scanRandMacAddress = false;
   };

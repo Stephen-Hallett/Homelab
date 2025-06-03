@@ -40,8 +40,8 @@
     };
 
     # Needed for 32-bit games
-    hardware.opengl.driSupport32Bit = true;
-    hardware.opengl.enable = true;
+    hardware.graphics.enable32Bit = true;
+    hardware.graphics.enable = true;
 
   };
 }
