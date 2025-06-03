@@ -55,7 +55,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault false;
   networking.interfaces.enp34s0.useDHCP = lib.mkDefault true;
-  networking.interfaces.wlp37s0.useDHCP = lib.mkDefault true;
+  networking.interfaces.wlp37s0.useDHCP = lib.mkDefault false;
 
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
