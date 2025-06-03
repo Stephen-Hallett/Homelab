@@ -29,4 +29,16 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIMdJToR98zQBYzxChvaa9FaSA7i4nnc5Fh5Hi0J8+kL stevohallett@gmail.com" 
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYAfzepBhppPySEsVJhK7seclKfChf5HXPke/ecbkwF stevohallett@gmail.com"
   ];
+
+  security.sudo.extraRules = [
+    {
+      users = [ "stephen" ];
+      commands = [
+        {
+          command = "ALL";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 }

@@ -18,3 +18,9 @@ code.hosted.stephenhallett.nz {
     reverse_proxy http://100.76.206.4:4200
     import cloudflare
 }
+
+# qbittorrent
+qbittorrent.hosted.stephenhallett.nz {
+    reverse_proxy http://192.168.1.76:8200
+    import cloudflare
+}

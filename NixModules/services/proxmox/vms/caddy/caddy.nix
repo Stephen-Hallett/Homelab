@@ -18,5 +18,9 @@
         onboot = true;
       };
     };
+
+    networking.extraHosts = ''
+      192.168.1.79 caddy
+    '';
   };
 }
