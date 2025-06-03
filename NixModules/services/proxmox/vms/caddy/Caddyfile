@@ -1,21 +1,20 @@
 (cloudflare) {
     tls {
-        dns cloudflare roVvE9DInt7ifE1XZU9SoEZROtNdJHtIT8n_Iqn9
+        dns cloudflare {$CF_DNS_TOKEN}
     }
 }
 
 # proxmox
 proxmox.hosted.stephenhallett.nz {
-    reverse_proxy http://192.168.1.72:8006
-    import cloudflare
+    reverse_proxy https://100.76.206.4:8006 {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
 }
 
 # code-server
 code.hosted.stephenhallett.nz {
     reverse_proxy http://100.76.206.4:4200
     import cloudflare
-}
-
-test.hosted.stephenhallett.nz {
-    respond "Hello this is working"
 }
