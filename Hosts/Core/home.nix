@@ -26,6 +26,7 @@
       usbutils
       pciutils
       cifs-utils
+      dig
     ];
   };
 

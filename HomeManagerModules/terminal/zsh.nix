@@ -116,6 +116,16 @@
             clipcopy $1
         }
 
+        # Function to rebuild NixOS VMs
+        rbvm() {
+          local host="$1"
+          sudo nixos-rebuild switch \
+            --target-host "stephen@$host" \
+            --use-remote-sudo \
+            --impure \
+            --flake "$HOME/Homelab#$host"
+        }
+
         #Function to activate virtual environments
         activate() {
           source "$1"/bin/activate
