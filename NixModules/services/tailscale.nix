@@ -50,6 +50,7 @@
 
         # let you SSH in over the public internet
         allowedTCPPorts = [ 22 ];
-    };      
+    };     
+    networking.nameservers = [ "100.100.100.100" ];
   };
 }
