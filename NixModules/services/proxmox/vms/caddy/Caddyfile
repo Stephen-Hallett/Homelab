@@ -1,6 +1,6 @@
 (cloudflare) {
     tls {
-        dns cloudflare {$CF_DNS_TOKEN}
+        dns cloudflare {$CF_DNS_TOKEN} 
     }
 }
 

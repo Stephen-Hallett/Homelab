@@ -23,9 +23,15 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # sops
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, proxmox-nixos, disko, ...
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, proxmox-nixos, disko, sops-nix, ...
     }@inputs:
     let
       inherit (self) outputs;
@@ -93,6 +99,7 @@
           modules = [
             proxmox-nixos.nixosModules.proxmox-ve
             disko.nixosModules.disko
+            sops-nix.nixosModules.sops
             ./Hosts/VM/configuration.nix
           ];
         };
@@ -104,6 +111,7 @@
           modules = [
             proxmox-nixos.nixosModules.proxmox-ve
             disko.nixosModules.disko
+            sops-nix.nixosModules.sops
             ./NixModules/services/proxmox/vms/caddy/configuration.nix
           ];
         };

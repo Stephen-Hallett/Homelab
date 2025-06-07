@@ -27,6 +27,9 @@
       pciutils
       cifs-utils
       dig
+      age
+      ssh-to-age
+      sops
     ];
   };
 

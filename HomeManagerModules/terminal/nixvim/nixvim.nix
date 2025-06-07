@@ -8,6 +8,7 @@
   config = lib.mkIf config.core-packages.nixvim.enable {
     programs.nixvim = {
       enable = true;
+      defaultEditor = true;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;

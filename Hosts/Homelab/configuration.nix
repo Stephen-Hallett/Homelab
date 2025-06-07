@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
     ./../Core/configuration.nix
     ./hardware-configuration.nix
+    inputs.sops-nix.nixosModules.sops
   ];
 
   nix-config = {
@@ -57,5 +58,13 @@
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
+
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/stephen/.config/sops/age/keys.txt";
+
+  sops.secrets.cloudflare = {
+    owner = "caddy"
+  };
 
 }
