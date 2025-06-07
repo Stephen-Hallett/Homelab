@@ -59,12 +59,13 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/stephen/.config/sops/age/keys.txt";
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/stephen/.config/sops/age/keys.txt";
 
-  sops.secrets.cloudflare = {
-    owner = "caddy"
+    secrets = {
+      cloudflare.owner = "caddy"
+    };
   };
-
 }
