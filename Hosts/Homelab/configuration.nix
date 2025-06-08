@@ -25,6 +25,7 @@
     docker.enable = true;
     fonts.enable = true;
     neovim.enable = true;
+    tdarr-node.enable = true;
   };
 
   # Bootloader.

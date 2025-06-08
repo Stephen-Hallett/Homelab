@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./tdarr-node.nix
+  ];
+}
