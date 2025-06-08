@@ -35,15 +35,15 @@
   virtualisation.oci-containers.containers = {
     tdarr-node = {
       autoStart = true;
-      image = "ghcr.io/haveagitgat/tdarr_node:latest";
+      image = "ghcr.io/haveagitgat/tdarr_node:2.31.02";
       environment = {
-        PUID=1000;
-        PGID=1000;
-        UMASK=0002;
+        PUID="1000";
+        PGID="1000";
+        UMASK="0002";
         TZ="Pacific/Auckland";
         nodeID="homelab_node";
         serverIP="192.168.1.76";
-        serverPort=8266;
+        serverPort="8266";
       };
       volumes = [
         "/home/stephen/Media/Data/tdarr/configs:/app/configs"

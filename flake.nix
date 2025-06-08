@@ -108,6 +108,7 @@
         # sudo nixos-rebuild switch --target-host stephen@192.168.1.79 --use-remote-sudo --impure --flake ~/Homelab#caddy
         caddy = mkVMConfig ./VMs/caddy/configuration.nix "x86_64-linux";
         testvm = mkVMConfig ./VMs/testvm/configuration.nix "x86_64-linux";
+        tdarr = mkVMConfig ./VMs/tdarr/configuration.nix "x86_64-linux";
       };
     };
 }

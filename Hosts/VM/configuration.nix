@@ -26,9 +26,9 @@
   ];
 
   users.users.root.openssh.authorizedKeys.keys = [
-    (builtins.readFile ./ssh/id_homewsl.pub) # Home WSL
-    (builtins.readFile ./ssh/id_homemac.pub) # Home Macbook
-    (builtins.readFile ./ssh/id_homelab.pub) # Homelab
+    (builtins.readFile ./../Core/ssh/id_homewsl.pub) # Home WSL
+    (builtins.readFile ./../Core/ssh/id_homemac.pub) # Home Macbook
+    (builtins.readFile ./../Core/ssh/id_homelab.pub) # Homelab
   ];
 
   security.sudo.extraRules = [
