@@ -2,7 +2,7 @@
   imports = [
     ./networking.nix
     ./sunshine.nix
-    ./proxmox/proxmox.nix
+    ./proxmox.nix
     ./headless.nix
     ./desktop.nix
     ./code-server.nix

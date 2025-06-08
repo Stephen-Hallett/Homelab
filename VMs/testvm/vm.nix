@@ -1,7 +1,10 @@
 { pkgs, lib, config, ... }: {
+  options = {
+    nix-config.proxmox.enable = lib.mkEnableOption "enable proxmox";
+  };
+  
   config = lib.mkIf config.nix-config.proxmox.enable {
-    services.proxmox-ve.vms = {
-      testvm = {
+    services.proxmox-ve.vms.testvm = {
         vmid = 201;
         memory = 1024;
         cores = 1;
@@ -16,7 +19,6 @@
         cdrom = "ProxmoxVMs:iso/latest-nixos-minimal-x86_64-linux.iso";
         bios = "ovmf";
         onboot = true;
-      };
     };
 
     networking.extraHosts = ''

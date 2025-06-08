@@ -1,6 +1,4 @@
 { pkgs, lib, config, ... }: {
-  imports = [./vms/caddy/vm.nix ./vms/testvm/vm.nix];
-
   options = {
     nix-config.proxmox.enable = lib.mkEnableOption "enable proxmox";
   };

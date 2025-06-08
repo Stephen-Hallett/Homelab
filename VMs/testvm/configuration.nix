@@ -6,8 +6,8 @@
 }:
 {
   imports = [
-    ./../../../../../Hosts/VM/configuration.nix
-    ./../../../tailscale.nix
+    ./../../Hosts/VM/configuration.nix
+    ./../../NixModules/services/tailscale.nix
   ];
 
   nix-config = {

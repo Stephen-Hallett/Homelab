@@ -112,7 +112,7 @@
             proxmox-nixos.nixosModules.proxmox-ve
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
-            ./NixModules/services/proxmox/vms/caddy/configuration.nix
+            ./VMs/caddy/configuration.nix
           ];
         };
 
@@ -123,7 +123,7 @@
             proxmox-nixos.nixosModules.proxmox-ve
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
-            ./NixModules/services/proxmox/vms/testvm/configuration.nix
+            ./VMs/testvm/configuration.nix
           ];
         };
       };
