@@ -8,7 +8,6 @@
   imports = [ # Include the results of the hardware scan.
     ./../Core/configuration.nix
     ./hardware-configuration.nix
-    inputs.sops-nix.nixosModules.sops
   ];
 
   nix-config = {
@@ -59,13 +58,4 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  sops = {
-    defaultSopsFile = ./secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-    age.keyFile = "/home/stephen/.config/sops/age/keys.txt";
-
-    secrets = {
-      cloudflare.owner = "caddy"
-    };
-  };
 }

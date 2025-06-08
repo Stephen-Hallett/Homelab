@@ -1,0 +1,17 @@
+keys:
+  - users:
+    - &stephen age12gs25e8g5q4rm484mneckwwfch5qg0yhv5jp0h0yw287ylux8ccsca8lzv
+  - hosts:
+    - &homelab age175rjah4xuutdfg2kp493mwmm3wsascaekexffjjc50ydfd2pz3es8k2klw
+    - &homewsl age14z8ngqr7kc4w4d3dlakjn9uta56ly8d6lut3654hqn59xfyuavgsnyefaw
+    - &homemac age1wy3a5945jsylwwud43dmrhkxw2gc7vqntxu9yltyje2wkkftsuqq4v8jkk
+    - &caddy age1ralzdrjj5ry2dh0m785y9yvgypf8cv7ryw3lfh9ynh79wqaxxchsc77htc
+creation_rules:
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+    - age:
+      - *stephen
+      - *homelab
+      - *homewsl
+      - *homemac
+      - *caddy
