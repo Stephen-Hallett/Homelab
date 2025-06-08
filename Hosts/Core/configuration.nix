@@ -85,6 +85,10 @@
         owner = config.users.users.stephen.name;
         inherit (config.users.users.stephen) group;
       };
+      tailscale = {
+        owner = config.users.users.stephen.name;
+        inherit (config.users.users.stephen) group;
+      };
       "private_keys/homelab" = {
         path = "/home/stephen/.ssh/id_ed25519";
         owner = config.users.users.stephen.name;

@@ -34,7 +34,7 @@
             fi
 
             # otherwise authenticate with tailscale
-            ${pkgs.tailscale}/bin/tailscale up -authkey tskey-auth-k26L6Ha88V11CNTRL-H5s67oaeP398sv3CFEYt29xK4VDctPLy
+            ${pkgs.tailscale}/bin/tailscale up -authkey $(cat ${config.sops.secrets.tailscale.path})
         '';
     };
 

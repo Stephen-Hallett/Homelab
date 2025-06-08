@@ -115,6 +115,17 @@
             ./NixModules/services/proxmox/vms/caddy/configuration.nix
           ];
         };
+
+        testvm = nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          system = "x86_64-linux";
+          modules = [
+            proxmox-nixos.nixosModules.proxmox-ve
+            disko.nixosModules.disko
+            sops-nix.nixosModules.sops
+            ./NixModules/services/proxmox/vms/testvm/configuration.nix
+          ];
+        };
       };
     };
 }
