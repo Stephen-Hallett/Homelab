@@ -32,7 +32,7 @@
     extraConfig = ''
       (cloudflare) {
           tls {
-              dns cloudflare $(cat ${config.sops.secrets.cloudflare.path})
+              dns cloudflare ${builtins.readFile config.sops.secrets.cloudflare.path}
           }
       }
 
@@ -54,6 +54,12 @@
       # qbittorrent
       qbittorrent.hosted.stephenhallett.nz {
           reverse_proxy http://192.168.1.76:8200
+          import cloudflare
+      }
+
+      # homarr
+      homarr.hosted.stephenhallett.nz {
+          reverse_proxy http://192.168.1.76:3200
           import cloudflare
       }
     '';
