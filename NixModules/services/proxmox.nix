@@ -3,6 +3,10 @@
     nix-config.proxmox.enable = lib.mkEnableOption "enable proxmox";
   };
 
+  imports = [
+    ./../../VMs
+  ];
+
   config = lib.mkIf config.nix-config.proxmox.enable {
     services.proxmox-ve = {
       enable = true;

@@ -1,8 +1,4 @@
 { pkgs, lib, config, ... }: {
-  options = {
-    nix-config.proxmox.enable = lib.mkEnableOption "enable proxmox";
-  };
-  
   config = lib.mkIf config.nix-config.proxmox.enable {
     services.proxmox-ve.vms.testvm = {
         vmid = 201;

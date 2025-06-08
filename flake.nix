@@ -69,6 +69,17 @@
             machineModule
           ];
         };
+
+      mkVMConfig = machineModule: system:
+        nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            proxmox-nixos.nixosModules.proxmox-ve
+            disko.nixosModules.disko
+            sops-nix.nixosModules.sops
+            machineModule
+          ];
+        };
     in {
       homeConfigurations = {
         "root@DietPi" = mkHomeConfig ./Hosts/Core/home.nix "aarch64-linux";
@@ -76,6 +87,7 @@
         "stephen@media" = mkHomeConfig ./Hosts/VM/home.nix "aarch64-linux";
         "stephen@homelab" =
           mkHomeConfig ./Hosts/Homelab/home.nix "x86_64-linux";
+        "stephen" = mkHomeConfig ./Hosts/VM/home.nix "x86_64-linux";
       };
 
       nixosConfigurations = {
@@ -86,46 +98,16 @@
             ({ lib, pkgs, ... }: {
               nixpkgs.overlays = [ proxmox-nixos.overlays.x86_64-linux ];
             })
-
             ./Hosts/Homelab/configuration.nix
           ];
         };
 
         # For first time running nixos-anywhere run the following to generate a config
         #nix run nixpkgs#nixos-anywhere -- --flake /home/stephen/Homelab#vm --generate-hardware-config nixos-generate-config ./Hosts/VM/hardware-configuration.nix root@IP_ADDRESS
-        vm = nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          system = "x86_64-linux";
-          modules = [
-            proxmox-nixos.nixosModules.proxmox-ve
-            disko.nixosModules.disko
-            sops-nix.nixosModules.sops
-            ./Hosts/VM/configuration.nix
-          ];
-        };
-
+        vm = mkVMConfig ./Hosts/VM/configuration.nix "x86_64-linux";
         # sudo nixos-rebuild switch --target-host stephen@192.168.1.79 --use-remote-sudo --impure --flake ~/Homelab#caddy
-        caddy = nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          system = "x86_64-linux";
-          modules = [
-            proxmox-nixos.nixosModules.proxmox-ve
-            disko.nixosModules.disko
-            sops-nix.nixosModules.sops
-            ./VMs/caddy/configuration.nix
-          ];
-        };
-
-        testvm = nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          system = "x86_64-linux";
-          modules = [
-            proxmox-nixos.nixosModules.proxmox-ve
-            disko.nixosModules.disko
-            sops-nix.nixosModules.sops
-            ./VMs/testvm/configuration.nix
-          ];
-        };
+        caddy = mkVMConfig ./VMs/caddy/configuration.nix "x86_64-linux";
+        testvm = mkVMConfig ./VMs/testvm/configuration.nix "x86_64-linux";
       };
     };
 }
