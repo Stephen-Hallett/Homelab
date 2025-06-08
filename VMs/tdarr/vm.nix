@@ -18,7 +18,7 @@
     };
 
     networking.extraHosts = ''
-      192.168.1.84 tdarr
+      192.168.1.86 tdarr
     '';
   };
 }
