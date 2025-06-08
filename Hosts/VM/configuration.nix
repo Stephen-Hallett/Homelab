@@ -26,8 +26,9 @@
   ];
 
   users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIMdJToR98zQBYzxChvaa9FaSA7i4nnc5Fh5Hi0J8+kL stevohallett@gmail.com" 
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYAfzepBhppPySEsVJhK7seclKfChf5HXPke/ecbkwF stevohallett@gmail.com"
+    (builtins.readFile ./ssh/id_homewsl.pub) # Home WSL
+    (builtins.readFile ./ssh/id_homemac.pub) # Home Macbook
+    (builtins.readFile ./ssh/id_homelab.pub) # Homelab
   ];
 
   security.sudo.extraRules = [

@@ -30,6 +30,7 @@
       age
       ssh-to-age
       sops
+      fd
     ];
   };
 
