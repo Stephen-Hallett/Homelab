@@ -62,6 +62,12 @@
           reverse_proxy http://192.168.1.76:3200
           import cloudflare
       }
+
+      # tdarr
+      tdarr.hosted.stephenhallett.nz {
+          reverse_proxy http://192.168.1.76:8265
+          import cloudflare
+      }
     '';
   };
 }

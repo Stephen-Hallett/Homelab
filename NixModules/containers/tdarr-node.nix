@@ -20,7 +20,9 @@
             "/home/stephen/Media/Data/tdarr_transcode_cache:/temp"
             "/home/stephen/Media/Media/media:/data"
         ];
-        extraOptions = [ "--device=/dev/dri" ];
+        devices = [
+          "/dev/dri:/dev/dri"
+        ];
     };
   };
 }
