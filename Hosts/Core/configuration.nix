@@ -85,6 +85,10 @@
         owner = config.users.users.stephen.name;
         inherit (config.users.users.stephen) group;
       };
+      nextcloudpassword = {
+        owner = config.users.users.stephen.name;
+        inherit (config.users.users.stephen) group;
+      };
       tailscale = {
         owner = config.users.users.stephen.name;
         inherit (config.users.users.stephen) group;

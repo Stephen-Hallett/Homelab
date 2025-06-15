@@ -26,6 +26,7 @@
     fonts.enable = true;
     neovim.enable = true;
     tdarr-node.enable = true;
+    nextcloud.enable = true;
   };
 
   # Bootloader.

@@ -68,6 +68,12 @@
           reverse_proxy http://192.168.1.76:8265
           import cloudflare
       }
+
+      # nextcloud
+      nextcloud.hosted.stephenhallett.nz {
+          reverse_proxy http://100.76.206.4:1000
+          import cloudflare
+      }
     '';
   };
 }

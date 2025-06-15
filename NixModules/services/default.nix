@@ -7,5 +7,6 @@
     ./desktop.nix
     ./code-server.nix
     ./tailscale.nix
+    ./nextcloud.nix
   ];
 }
