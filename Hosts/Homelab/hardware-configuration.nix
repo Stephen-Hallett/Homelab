@@ -34,7 +34,7 @@
     fsType = "ext4";
   };
 
-  fileSystems."/home/stephen/Media" = {
+  fileSystems."/mnt/NFS-Storage" = {
     device = "192.168.1.152:/mnt/Mediastack";
     fsType = "nfs";
     options = [ "defaults" "noatime" "vers=3" "_netdev" ];
@@ -42,7 +42,7 @@
   };
 
   systemd.tmpfiles.rules = [ 
-    "d /home/stephen/Media 0755 root root -" 
+    "d /mnt/NFS-Storage 0755 root root -" 
     "d /mnt/proxmox 0755 root root -"
   ];
 

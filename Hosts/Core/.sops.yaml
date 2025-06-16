@@ -7,6 +7,7 @@ keys:
     - &homemac age1wy3a5945jsylwwud43dmrhkxw2gc7vqntxu9yltyje2wkkftsuqq4v8jkk
     - &caddy age1ralzdrjj5ry2dh0m785y9yvgypf8cv7ryw3lfh9ynh79wqaxxchsc77htc
     - &testvm age10g937t3ttk5lw75arwsmfja5xhp4xwfx3exls540sd0e5ar6qunsureefx
+    - &mediaserver age13pjcsa5dkh6l3fr0hxgd3vca56dy59qheysew9mzqq030ncvqdgs568qv0
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
@@ -17,3 +18,4 @@ creation_rules:
       - *homemac
       - *caddy
       - *testvm
+      - *mediaserver

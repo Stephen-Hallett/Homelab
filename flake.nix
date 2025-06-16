@@ -109,6 +109,7 @@
         caddy = mkVMConfig ./VMs/caddy/configuration.nix "x86_64-linux";
         testvm = mkVMConfig ./VMs/testvm/configuration.nix "x86_64-linux";
         tdarr = mkVMConfig ./VMs/tdarr/configuration.nix "x86_64-linux";
+        mediaserver = mkVMConfig ./VMs/mediaserver/configuration.nix "x86_64-linux";
       };
     };
 }

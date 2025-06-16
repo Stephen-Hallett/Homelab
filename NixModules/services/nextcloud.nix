@@ -4,6 +4,10 @@
   };
 
   config = lib.mkIf config.nix-config.nextcloud.enable {
+    systemd.tmpfiles.rules = [ 
+      "d /mnt/NFS-Storage/nextcloud 0755 nextcloud nextcloud -"
+    ];
+
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud31;
@@ -11,6 +15,7 @@
       database.createLocally = true;
       configureRedis = true;
       https = true;
+      datadir = "/mnt/NFS-Storage/nextcloud";
 
       config = {
         dbtype = "mysql";
@@ -29,10 +34,7 @@
       phpOptions = {
         "opcache.interned_strings_buffer" = "16";
       };
-      extraAppsEnable = true;
-      extraApps = {
-        inherit (pkgs.nextcloud31Packages.apps) mail calendar contacts;
-      };
+      appstoreEnable = true;
     };
 
     services.nginx = {

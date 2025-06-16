@@ -15,10 +15,10 @@
             serverPort="8266";
         };
         volumes = [
-            "/home/stephen/Media/Data/tdarr/configs:/app/configs"
-            "/home/stephen/Media/Data/tdarr/logs:/app/logs"
-            "/home/stephen/Media/Data/tdarr_transcode_cache:/temp"
-            "/home/stephen/Media/Media/media:/data"
+            "/mnt/NFS-Storage/Data/tdarr/configs:/app/configs"
+            "/mnt/NFS-Storage/Data/tdarr/logs:/app/logs"
+            "/mnt/NFS-Storage/Data/tdarr_transcode_cache:/temp"
+            "/mnt/NFS-Storage/Media/media:/data"
         ];
         devices = [
           "/dev/dri:/dev/dri"
