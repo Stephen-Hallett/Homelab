@@ -12,9 +12,6 @@
       displayManager.gdm.enable = true;
       displayManager.defaultSession = "gnome";
 
-      displayManager.autoLogin.enable = true;
-      displayManager.autoLogin.user = "sunshine"; # user must exists
-
       desktopManager.gnome.enable = true;
 
       virtualScreen = {
