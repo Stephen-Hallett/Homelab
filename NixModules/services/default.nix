@@ -1,5 +1,6 @@
 {
   imports = [
+    ./immich.nix
     ./networking.nix
     ./sunshine.nix
     ./proxmox.nix

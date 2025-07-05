@@ -74,6 +74,12 @@
           reverse_proxy http://100.76.206.4:1000
           import cloudflare
       }
+
+      # immich
+      immich.hosted.stephenhallett.nz {
+          reverse_proxy http://100.76.206.4:2283
+          import cloudflare
+      }
     '';
   };
 }

@@ -18,7 +18,7 @@
     };
 
     networking.extraHosts = ''
-      192.168.1.79 caddy
+      192.168.1.27 caddy
     '';
   };
 }

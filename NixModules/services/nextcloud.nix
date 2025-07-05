@@ -8,6 +8,8 @@
       "d /mnt/NFS-Storage/nextcloud 0755 nextcloud nextcloud -"
     ];
 
+    users.users.stephen.extraGroups = ["nextcloud"];
+
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud31;

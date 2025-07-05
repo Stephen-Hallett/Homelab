@@ -18,7 +18,7 @@
     };
 
     networking.extraHosts = ''
-      192.168.1.98 mediaserver
+      192.168.1.37 mediaserver
     '';
   };
 }
