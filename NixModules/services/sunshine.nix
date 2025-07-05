@@ -4,12 +4,21 @@
   };
 
   config = lib.mkIf config.nix-config.sunshine.enable {
+    environment.systemPackages = with pkgs; [ sunshine ];
     services.sunshine = {
       enable = true;
       autoStart = true;
       capSysAdmin = true;
       openFirewall = true;
     };
+
+    users.users.sunshine = {
+        isNormalUser  = true;
+        home  = "/home/sunshine";
+        description  = "Sunshine Server";
+        extraGroups  = [ "wheel" "networkmanager" "input" "video" "sound"];
+    };
+
 
     networking.firewall = {
       enable = true;

@@ -60,9 +60,9 @@
     hashedPassword="$6$J4gYl8oepiSEZTFi$VReuvn2W7NDCLKXQjLjWnhm2gaDhYnvOYt9g2c.f6YNB2CwwtGR.FFoiLES4buTPuD.ONYj5tVW7/DrGI1sby1";
   };
 
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "stephen";
+  # # Enable automatic login for the user.
+  # services.displayManager.autoLogin.enable = true;
+  # services.displayManager.autoLogin.user = "stephen";
 
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
