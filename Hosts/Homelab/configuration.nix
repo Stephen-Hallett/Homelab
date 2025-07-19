@@ -15,8 +15,8 @@
     immich.enable = true;
     sunshine.enable = true;
     proxmox.enable = true;
-    headless.enable = true;
-    desktop.enable = false;
+    headless.enable = false;
+    desktop.enable = true;
     code-server.enable = true;
     swap.enable = true;
     steam.enable = true;

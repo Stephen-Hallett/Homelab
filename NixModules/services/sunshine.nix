@@ -12,14 +12,6 @@
       openFirewall = true;
     };
 
-    users.users.sunshine = {
-        isNormalUser  = true;
-        home  = "/home/sunshine";
-        description  = "Sunshine Server";
-        extraGroups  = [ "wheel" "networkmanager" "input" "video" "sound"];
-    };
-
-
     networking.firewall = {
       enable = true;
       allowedTCPPorts = [ 47984 47989 47990 48010 ];
