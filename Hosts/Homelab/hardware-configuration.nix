@@ -23,7 +23,7 @@
     options = [ "fmask=0077" "dmask=0077" ];
   };
 
-  fileSystems."/mnt/storage" = {
+  fileSystems."/home/stephen/storage" = {
     device = "/dev/disk/by-uuid/14af4506-c42f-4c86-8f53-cc1953a18346";
     fsType = "ext4";
     neededForBoot = false;
@@ -44,6 +44,7 @@
   systemd.tmpfiles.rules = [ 
     "d /mnt/NFS-Storage 0755 root root -" 
     "d /mnt/proxmox 0755 root root -"
+    "d /home/stephen/storage 0755 stephen stephen -" 
   ];
 
   swapDevices =

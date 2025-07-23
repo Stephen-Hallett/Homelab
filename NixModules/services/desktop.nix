@@ -4,18 +4,22 @@
   };
 
   config = lib.mkIf config.nix-config.desktop.enable {
-    # Enable the X11 windowing system.
-    services.xserver.enable = true;
+    programs.uwsm.enable = true;
+    programs.hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-    # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.plasma5.enable = true;
-    environment.variables = {WAYLAND_DISPLAY = 0;};
+    environment.systemPackages = with pkgs; [
+      kitty
+      xdg-desktop-portal-gtk
+      xwayland
+    ];
 
-    # Configure keymap in X11
-    services.xserver.xkb = {
-      layout = "nz";
-      variant = "";
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
     };
   };
 }
