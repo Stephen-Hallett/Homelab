@@ -51,6 +51,15 @@
           import cloudflare
       }
 
+      # Sunshine
+      sunshine.hosted.stephenhallett.nz {
+          reverse_proxy https://100.76.206.4:47990 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+          }
+      }
+
       # qbittorrent
       qbittorrent.hosted.stephenhallett.nz {
           reverse_proxy http://192.168.1.76:8200
