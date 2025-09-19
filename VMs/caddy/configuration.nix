@@ -90,6 +90,12 @@
           import cloudflare
       }
 
+      # jenkins
+      jenkins.hosted.stephenhallett.nz {
+          reverse_proxy http://100.76.206.4:8181
+          import cloudflare
+      }
+
       scopus-check.hosted.stephenhallett.nz {
         reverse_proxy http://100.74.152.81:8080
         import cloudflare
