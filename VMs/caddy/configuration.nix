@@ -100,6 +100,11 @@
         reverse_proxy http://100.74.152.81:8080
         import cloudflare
       }
+
+      savingsapi.hosted.stephenhallett.nz {
+        reverse_proxy http://100.74.152.81:8181
+        import cloudflare
+      }
     '';
   };
 }

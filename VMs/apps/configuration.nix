@@ -16,7 +16,7 @@
 
   environment.systemPackages = [ pkgs.docker ];
 
-  networking.hostName = "scopus-check";
+  networking.hostName = "apps";
 
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 80 443 ];

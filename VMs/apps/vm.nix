@@ -18,7 +18,7 @@
     };
 
     networking.extraHosts = ''
-      192.168.1.66 scopus-check
+      192.168.1.33 apps
     '';
   };
 }
