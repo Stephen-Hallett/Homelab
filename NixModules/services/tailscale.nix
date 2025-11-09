@@ -1,11 +1,11 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, pkgs-unstable,  lib, config, ... }:
 {
   options = {
     nix-config.tailscale.enable = lib.mkEnableOption "enable tailscale";
   };
 
   config = lib.mkIf config.nix-config.tailscale.enable {
-    environment.systemPackages = [ pkgs.tailscale ];
+    environment.systemPackages = [ pkgs-unstable.tailscale ];
 
     services.tailscale = {
         enable = true;
@@ -28,13 +28,13 @@
             sleep 2
 
             # check if we are already authenticated to tailscale
-            status="$(${pkgs.tailscale}/bin/tailscale status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
+            status="$(${pkgs-unstable.tailscale}/bin/tailscale status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
             if [ $status = "Running" ]; then # if so, then do nothing
             exit 0
             fi
 
             # otherwise authenticate with tailscale
-            ${pkgs.tailscale}/bin/tailscale up -authkey $(cat ${config.sops.secrets.tailscale.path})
+            ${pkgs-unstable.tailscale}/bin/tailscale up -authkey $(cat ${config.sops.secrets.tailscale.path})
         '';
     };
 
