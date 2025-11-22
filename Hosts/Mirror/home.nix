@@ -19,7 +19,6 @@
       wget
       curl
       nerd-fonts.symbols-only
-      nixfmt-classic
       neofetch
 
       nfs-utils
@@ -27,10 +26,11 @@
       pciutils
       cifs-utils
       dig
-      age
-      ssh-to-age
-      sops
       fd
+
+      docker
+      docker-compose
+      containerd
     ];
   };
 

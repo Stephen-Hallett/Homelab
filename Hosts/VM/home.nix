@@ -7,7 +7,6 @@
       docker
       docker-compose
       containerd
-      docker-buildx
     ];
   };
 }

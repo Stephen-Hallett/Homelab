@@ -84,6 +84,7 @@
       homeConfigurations = {
         "root@DietPi" = mkHomeConfig ./Hosts/Core/home.nix "aarch64-linux";
         "pi@raspberrypi" = mkHomeConfig ./Hosts/Core/home.nix "aarch64-linux";
+        "stephen@mymirror" = mkHomeConfig ./Hosts/Mirror/home.nix "aarch64-linux";
         "stephen@media" = mkHomeConfig ./Hosts/VM/home.nix "aarch64-linux";
         "stephen@homelab" =
           mkHomeConfig ./Hosts/Homelab/home.nix "x86_64-linux";
