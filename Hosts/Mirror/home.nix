@@ -20,6 +20,7 @@
       curl
       nerd-fonts.symbols-only
       neofetch
+      yarn
 
       nfs-utils
       usbutils
@@ -27,10 +28,6 @@
       cifs-utils
       dig
       fd
-
-      docker
-      docker-compose
-      containerd
     ];
   };
 
@@ -48,4 +45,31 @@
     git.enable = true;
     ripgrep.enable = true;
   };
+
+  systemd.user.services.mymirror = 
+    let
+      startScript = pkgs.writeShellScript "mymirror-start" ''
+        cd $HOME/myMirror/electron
+        ${pkgs.yarn}/bin/yarn install
+        exec ${pkgs.yarn}/bin/yarn start
+      '';
+    in {
+      Unit = {
+        Description = "myMirror Electron App";
+        After = [ "graphical-session.target" ];
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+      Service = {
+        Type = "simple";
+        Environment = [
+          "DISPLAY=:0"
+          "XAUTHORITY=%h/.Xauthority"
+        ];
+        ExecStart = "${startScript}";
+        Restart = "on-failure";
+        RestartSec = 10;
+      };
+    };
 }
