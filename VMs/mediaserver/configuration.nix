@@ -13,9 +13,14 @@
 
   media-modules = {
     jellyfin.enable = true;
+    mediastack.enable = true;
+    prowlarr.enable = false;
+    sonarr.enable = true;
+    radarr.enable = true;
 };
 
   nix-config = {
+    docker.enable = true;
     tailscale.enable = true;
   };
 
@@ -34,4 +39,28 @@
 
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 80 443 ];
+
+  # Declare all the secrets
+    sops.secrets = {
+      "mediastack/docker_subnet" = {
+        owner = config.users.users.stephen.name;
+        inherit (config.users.users.stephen) group;
+      };
+      "mediastack/docker_gateway" = {
+        owner = config.users.users.stephen.name;
+        inherit (config.users.users.stephen) group;
+      };
+      "mediastack/vpn_user" = {
+        owner = config.users.users.stephen.name;
+        inherit (config.users.users.stephen) group;
+      };
+      "mediastack/vpn_password" = {
+        owner = config.users.users.stephen.name;
+        inherit (config.users.users.stephen) group;
+      };
+      "mediastack/local_subnet" = {
+        owner = config.users.users.stephen.name;
+        inherit (config.users.users.stephen) group;
+      };
+    };
 }
