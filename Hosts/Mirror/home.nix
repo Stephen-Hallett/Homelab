@@ -76,6 +76,7 @@
 
   systemd.user.services.unclutter = {
     Unit = { After = [ "graphical-session.target" ]; };
+    Install = { WantedBy = [ "default.target" ]; };
     Service = { Environment = [ "DISPLAY=:0" "XAUTHORITY=%h/.Xauthority" ]; };
   };
 }
