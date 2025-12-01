@@ -31,6 +31,12 @@
     ];
   };
 
+  services.unclutter = {
+    enable = true;
+    timeout = 5;  # Hide cursor after 5 seconds of inactivity
+    threshold = 10;  # Minimum number of pixels cursor must move to be considered active
+  };
+
   fonts.fontconfig.enable = true;
 
   core-packages = {
