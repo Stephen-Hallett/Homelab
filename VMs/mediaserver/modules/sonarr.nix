@@ -1,5 +1,5 @@
 {
-  pkgs,
+  pkgs-unstable,
   lib,
   config,
   ...
@@ -16,11 +16,16 @@ in
     services.sonarr = {
       enable = true;
       openFirewall = true;
-      package = pkgs.sonarr;
+      package = pkgs-unstable.sonarr;
       dataDir = sonarrConfigDir;
+      user = "stephen";
+      group = "sonarr";
+      settings.server.port = 8989;
     };
     systemd.tmpfiles.rules = [
-      "d /mnt/NFS-Storage/Data/nix-mediaserver/sonarr 0755 sonarr sonarr -"
+      "d /mnt/NFS-Storage/Data/nix-mediaserver/sonarr 0775 stephen sonarr -"
     ];
+
+    users.users.stephen.extraGroups = [ "sonarr" ];
   };
 }

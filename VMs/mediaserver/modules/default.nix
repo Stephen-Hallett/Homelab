@@ -1,8 +1,7 @@
 {
   imports = [
-    ./jellyfin.nix
+    ./jellyseerr.nix
     ./mediastack.nix
-    ./prowlarr.nix
     ./sonarr.nix
     ./radarr.nix
   ];

@@ -110,6 +110,16 @@
         reverse_proxy http://100.74.152.81:4000
         import cloudflare
       }
+
+      admin.hosted.stephenhallett.nz {
+        reverse_proxy http://192.168.1.1
+        import cloudflare
+      }
+
+      buscomblights.hosted.stephenhallett.nz {
+        reverse_proxy http://192.168.1.160:8501
+        import cloudflare
+      }
     '';
   };
 }

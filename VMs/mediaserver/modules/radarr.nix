@@ -18,9 +18,13 @@ in
       openFirewall = true;
       package = pkgs.radarr;
       dataDir = radarrConfigDir;
+      user = "stephen";
+      group = "radarr";
+      settings.server.port = 7878;
     };
     systemd.tmpfiles.rules = [
-      "d /mnt/NFS-Storage/Data/nix-mediaserver/radarr 0755 radarr radarr -"
+      "d /mnt/NFS-Storage/Data/nix-mediaserver/radarr 0775 stephen radarr -"
     ];
+    users.users.stephen.extraGroups = [ "radarr" ];
   };
 }
