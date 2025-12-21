@@ -14,8 +14,8 @@
   media-modules = {
     jellyseerr.enable = true;
     mediastack.enable = true;
-    sonarr.enable = true;
-    radarr.enable = true;
+    sonarr.enable = false;
+    radarr.enable = false;
 };
 
   nix-config = {

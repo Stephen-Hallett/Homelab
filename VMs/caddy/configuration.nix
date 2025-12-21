@@ -60,12 +60,6 @@
           }
       }
 
-      # qbittorrent
-      qbittorrent.hosted.stephenhallett.nz {
-          reverse_proxy http://192.168.1.76:8200
-          import cloudflare
-      }
-
       # homarr
       homarr.hosted.stephenhallett.nz {
           reverse_proxy http://192.168.1.76:3200
@@ -118,6 +112,36 @@
 
       buscomblights.hosted.stephenhallett.nz {
         reverse_proxy http://192.168.1.160:8501
+        import cloudflare
+      }
+
+      sab.hosted.stephenhallett.nz {
+        reverse_proxy http://100.79.204.48:8080
+        import cloudflare
+      }
+
+      qbittorrent.hosted.stephenhallett.nz {
+        reverse_proxy http://100.79.204.48:8200
+        import cloudflare
+      }
+
+      sonarr.hosted.stephenhallett.nz {
+        reverse_proxy http://100.79.204.48:8989
+        import cloudflare
+      }
+
+      radarr.hosted.stephenhallett.nz {
+        reverse_proxy http://100.79.204.48:7878
+        import cloudflare
+      }
+
+      jellyseerr.hosted.stephenhallett.nz {
+        reverse_proxy http://100.79.204.48:5055
+        import cloudflare
+      }
+
+      jellyfin.hosted.stephenhallett.nz {
+        reverse_proxy http://100.76.206.4:8096
         import cloudflare
       }
     '';

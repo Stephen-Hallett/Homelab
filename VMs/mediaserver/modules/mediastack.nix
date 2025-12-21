@@ -122,6 +122,38 @@ in
               - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:prowlarr
               - TP_THEME=hotpink
             network_mode: "service:gluetun"
+          
+          sonarr:
+            image: lscr.io/linuxserver/sonarr:latest
+            container_name: sonarr
+            restart: unless-stopped
+            volumes:
+              - ${DataDir}/sonarr:/config
+              - ${MediaDir}:/data
+            ports:
+              - "8989:8989"
+            environment:
+              - PUID=1000
+              - PGID=1000
+              - TZ=Pacific/Auckland
+              - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:sonarr
+              - TP_THEME=hotpink
+
+          radarr:
+            image: lscr.io/linuxserver/radarr:latest
+            container_name: radarr
+            restart: unless-stopped
+            volumes:
+              - ${DataDir}/radarr:/config
+              - ${MediaDir}:/data
+            ports:
+              - "7878:7878"
+            environment:
+              - PUID=1000
+              - PGID=1000
+              - TZ=Pacific/Auckland
+              - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:sonarr
+              - TP_THEME=hotpink
       '';
 
     # Create an environment file that loads all secrets
