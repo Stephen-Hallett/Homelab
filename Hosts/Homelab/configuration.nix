@@ -66,4 +66,10 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  # ZFS setup
+  boot.supportedFilesystems = [ "zfs" ];
+  networking.hostId = "e774eeb4";
+
+  services.zfs.autoScrub.enable = true;
+  boot.zfs.extraPools = [ "tank" ];
 }
