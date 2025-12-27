@@ -8,6 +8,7 @@ let
   DataDir = "/mnt/NFS-Storage/Data/nix-mediaserver";
   MediaDir = "/mnt/NFS-Storage/Media";
   dockerDir = "mediastack";
+  theme = "dracula";
 in
 {
   options = {
@@ -87,7 +88,7 @@ in
               - TZ=Pacific/Auckland
               - WEBUI_PORT=8200
               - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:qbittorrent
-              - TP_THEME=hotpink
+              - TP_THEME=${theme}
             network_mode: "service:gluetun"
 
           sabnzbd:
@@ -106,7 +107,7 @@ in
               - PGID=1000
               - TZ=Pacific/Auckland
               - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:sabnzbd
-              - TP_THEME=hotpink
+              - TP_THEME=${theme}
             network_mode: "service:gluetun"
           
           prowlarr:
@@ -120,7 +121,7 @@ in
               - PGID=1000
               - TZ=Pacific/Auckland
               - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:prowlarr
-              - TP_THEME=hotpink
+              - TP_THEME=${theme}
             network_mode: "service:gluetun"
           
           sonarr:
@@ -137,7 +138,9 @@ in
               - PGID=1000
               - TZ=Pacific/Auckland
               - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:sonarr
-              - TP_THEME=hotpink
+              - TP_THEME=${theme}
+            networks:
+              - mediastack
 
           radarr:
             image: lscr.io/linuxserver/radarr:latest
@@ -152,8 +155,29 @@ in
               - PUID=1000
               - PGID=1000
               - TZ=Pacific/Auckland
-              - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:sonarr
-              - TP_THEME=hotpink
+              - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:radarr
+              - TP_THEME=${theme}
+            networks:
+              - mediastack
+          
+          bazarr:
+            image: lscr.io/linuxserver/bazarr:v1.5.3-ls328
+            container_name: bazarr
+            restart: unless-stopped
+            volumes:
+              - ${DataDir}/bazarr:/config
+              - ${MediaDir}/media/movies:/movies
+              - ${MediaDir}/media/tv:/tv
+            ports:
+              - "6767:6767"
+            environment:
+              - PUID=1000
+              - PGID=1000
+              - TZ=Pacific/Auckland
+              - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:bazarr
+              - TP_THEME=${theme}
+            networks:
+              - mediastack
       '';
 
     # Create an environment file that loads all secrets
@@ -188,7 +212,7 @@ in
         set -a
         source /run/mediastack.env
         set +a
-        docker compose -f /etc/${dockerDir}/compose.yaml up
+        docker compose -f /etc/${dockerDir}/compose.yaml up --force-recreate -d
       '';
       restartTriggers = [
         config.environment.etc."${dockerDir}/compose.yaml".source
