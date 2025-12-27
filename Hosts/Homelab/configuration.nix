@@ -72,4 +72,15 @@
 
   services.zfs.autoScrub.enable = true;
   boot.zfs.extraPools = [ "tank" ];
+
+  services.nfs.server = {
+    enable = true;
+    createMountPoints = true;
+    exports = ''
+/tank/mediastack *(rw,sync,no_subtree_check,no_root_squash,crossmnt)
+'';
+  };
+  # Required for NFSv4
+  networking.firewall.allowedTCPPorts = [ 2049 ];
+  networking.firewall.allowedUDPPorts = [ 2049 ];
 }

@@ -23,6 +23,13 @@
     tailscale.enable = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    nfs-utils
+    cifs-utils
+    dig
+  ];
+
+
   networking.hostName = "mediaserver";
 
   fileSystems."/mnt/NFS-Storage" = {
@@ -32,12 +39,27 @@
     neededForBoot = false;
   };
 
+  fileSystems."/tank" = {
+    device = "192.168.1.72:/tank/mediastack";
+    fsType = "nfs";
+
+    options = [
+      "defaults"
+      "x-systemd.automount"
+      "noatime"
+      "nfsvers=4"
+      "_netdev"
+    ];
+  };
+
   systemd.tmpfiles.rules = [ 
     "d /mnt/NFS-Storage 0755 root root -" 
+    "d /tank 0775 root root -"
   ];
 
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 2049 ];
+  networking.firewall.allowedUDPPorts = [ 2049 ];
 
   # Declare all the secrets
   sops.secrets = {

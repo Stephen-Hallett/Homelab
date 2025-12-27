@@ -5,8 +5,8 @@
   ...
 }:
 let
-  DataDir = "/mnt/NFS-Storage/Data/nix-mediaserver";
-  MediaDir = "/mnt/NFS-Storage/Media";
+  DataDir = "/tank/Data";
+  MediaDir = "/tank/Media";
   dockerDir = "mediastack";
   theme = "dracula";
 in
@@ -49,7 +49,6 @@ in
               - 8080:8080                             # WebUI Portal: SABnzbd
               - 8200:8200                             # WebUI Portal: qBittorrent
               - 6881:6881                             # Transmission Torrent Port
-              - 9696:9696                             # WebUI Portal: Prowlarr
 
             volumes:
               - ${DataDir}/gluetun:/gluetun
@@ -116,13 +115,16 @@ in
             restart: unless-stopped
             volumes:
               - ${DataDir}/prowlarr:/config
+            ports:
+              - "9696:9696"
             environment:
               - PUID=1000
               - PGID=1000
               - TZ=Pacific/Auckland
               - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:prowlarr
               - TP_THEME=${theme}
-            network_mode: "service:gluetun"
+            networks:
+              - mediastack
           
           sonarr:
             image: lscr.io/linuxserver/sonarr:latest
