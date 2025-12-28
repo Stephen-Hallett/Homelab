@@ -66,12 +66,6 @@
           import cloudflare
       }
 
-      # tdarr
-      tdarr.hosted.stephenhallett.nz {
-          reverse_proxy http://192.168.1.76:8265
-          import cloudflare
-      }
-
       # nextcloud
       nextcloud.hosted.stephenhallett.nz {
           reverse_proxy http://100.76.206.4:1000
@@ -143,6 +137,11 @@
       jellyfin.hosted.stephenhallett.nz {
         reverse_proxy http://100.76.206.4:8096
         import cloudflare
+      }
+
+      tdarr.hosted.stephenhallett.nz {
+          reverse_proxy http://100.79.204.48:8265
+          import cloudflare
       }
     '';
   };

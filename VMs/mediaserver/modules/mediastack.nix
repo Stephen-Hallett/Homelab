@@ -180,6 +180,32 @@ in
               - TP_THEME=${theme}
             networks:
               - mediastack
+          
+          tdarr:
+            image: ghcr.io/haveagitgat/tdarr:latest
+            container_name: tdarr
+            restart: unless-stopped
+            volumes:
+              - ${DataDir}/tdarr/server:/app/server
+              - ${DataDir}/tdarr/configs:/app/configs
+              - ${DataDir}/tdarr/logs:/app/logs
+              - ${DataDir}/tdarr_transcode_cache:/temp
+              - ${MediaDir}/media:/data
+            ports:
+              - "8266:8266"
+              - "8265:8265"
+            environment:
+              - PUID=1000
+              - PGID=1000
+              - UMASK=0002
+              - TZ=Pacific/Auckland
+              - serverIP=0.0.0.0
+              - serverPort=8266
+              - webUIPort=8265
+              - internalNode=false
+              - nodeID=Tdarr_Server
+            networks:
+              - mediastack
       '';
 
     # Create an environment file that loads all secrets
