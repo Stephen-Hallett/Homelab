@@ -38,11 +38,8 @@
 
       # proxmox
       proxmox.hosted.stephenhallett.nz {
-          reverse_proxy https://100.76.206.4:8006 {
-              transport http {
-                  tls_insecure_skip_verify
-              }
-          }
+          reverse_proxy http://100.76.206.4:8006
+          import cloudflare
       }
 
       # code-server
@@ -53,11 +50,8 @@
 
       # Sunshine
       sunshine.hosted.stephenhallett.nz {
-          reverse_proxy https://100.76.206.4:47990 {
-            transport http {
-                tls_insecure_skip_verify
-            }
-          }
+          reverse_proxy http://100.76.206.4:47990
+          import cloudflare
       }
 
       # homarr
