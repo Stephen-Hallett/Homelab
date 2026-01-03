@@ -5,8 +5,8 @@
   ...
 }:
 let
-  jellyfinConfigDir = "/mnt/NFS-Storage/Data/nix-mediaserver/jellyfin";
-  jellyfinMediaDir = "/mnt/NFS-Storage/Media";
+  jellyfinConfigDir = "/tank/mediastack/Data/jellyfin";
+  jellyfinMediaDir = "/tank/mediastack/Media";
 in
 {
   options = {
@@ -19,7 +19,7 @@ in
       openFirewall = true;
       dataDir = jellyfinConfigDir;
       user = "stephen";
-      group = "jellyfin";
+      group = "users";
       package = pkgs-unstable.jellyfin;
       # port 8096
     };
@@ -28,7 +28,7 @@ in
       jellyfin-ffmpeg
     ];
     systemd.tmpfiles.rules = [
-      "d /mnt/NFS-Storage/Data/nix-mediaserver/jellyfin 0775 stephen jellyfin -"
+      "d /tank/mediastack/Data/jellyfin 0775 stephen users -"
     ];
   };
 }
