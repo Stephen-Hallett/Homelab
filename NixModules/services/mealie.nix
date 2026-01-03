@@ -21,8 +21,8 @@
         TZ = "Pacific/Auckland";
 
         # Catppuccin Latte (Light Theme)
-        THEME_LIGHT_PRIMARY = "#EA76CB";    # Pink (primary brand color)
-        THEME_LIGHT_ACCENT = "#EA76CB";     # Pink (buttons/interactive)
+        THEME_LIGHT_PRIMARY = "#7287fd";    # Lavender (primary brand color)
+        THEME_LIGHT_ACCENT = "#7287fd";     # Lavender (buttons/interactive)
         THEME_LIGHT_SECONDARY = "#8839EF";  # Mauve (navigation/sidebar)
         THEME_LIGHT_SUCCESS = "#40A02B";    # Green
         THEME_LIGHT_INFO = "#1E66F5";       # Blue
@@ -30,8 +30,8 @@
         THEME_LIGHT_ERROR = "#D20F39";      # Red
         
         # Catppuccin Macchiato (Dark Theme)
-        THEME_DARK_PRIMARY = "#F5BDE6";     # Pink (primary brand color)
-        THEME_DARK_ACCENT = "#F5BDE6";      # Pink (buttons/interactive)
+        THEME_DARK_PRIMARY = "#b7bdf8";     # Lavender (primary brand color)
+        THEME_DARK_ACCENT = "#b7bdf8";      # Lavender (buttons/interactive)
         THEME_DARK_SECONDARY = "#C6A0F6";   # Mauve (navigation/sidebar)
         THEME_DARK_SUCCESS = "#A6DA95";     # Green
         THEME_DARK_INFO = "#8AADF4";        # Blue
