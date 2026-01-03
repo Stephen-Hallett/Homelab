@@ -22,6 +22,7 @@
     swap.enable = true;
     steam.enable = true;
     tailscale.enable = true;
+    mealie.enable = true;
     networking.enable = true;
     coding.enable = true;
     docker.enable = true;

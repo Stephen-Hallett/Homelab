@@ -137,6 +137,11 @@
           reverse_proxy http://100.79.204.48:8265
           import cloudflare
       }
+
+      mealie.hosted.stephenhallett.nz {
+        reverse_proxy http://100.76.206.4:9000
+        import cloudflare
+      }
     '';
   };
 }

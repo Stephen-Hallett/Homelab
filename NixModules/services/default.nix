@@ -3,6 +3,7 @@
     ./immich.nix
     ./jellyfin.nix
     ./jenkins.nix
+    ./mealie.nix
     ./networking.nix
     ./sunshine.nix
     ./proxmox.nix
