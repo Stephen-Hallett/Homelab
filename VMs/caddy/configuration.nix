@@ -88,6 +88,11 @@
         import cloudflare
       }
 
+      portfolio.hosted.stephenhallett.nz {
+        reverse_proxy http://100.74.152.81:3000
+        import cloudflare
+      }
+
       calories.hosted.stephenhallett.nz {
         reverse_proxy http://100.74.152.81:4000
         import cloudflare
@@ -135,6 +140,11 @@
 
       tdarr.hosted.stephenhallett.nz {
           reverse_proxy http://100.79.204.48:8265
+          import cloudflare
+      }
+
+      bazarr.hosted.stephenhallett.nz {
+          reverse_proxy http://100.79.204.48:6767
           import cloudflare
       }
 
