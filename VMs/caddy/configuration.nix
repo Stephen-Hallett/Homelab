@@ -88,6 +88,16 @@
         import cloudflare
       }
 
+      bustimer.hosted.stephenhallett.nz {
+        reverse_proxy http://100.74.152.81:8081
+        import cloudflare
+      }
+
+      bustimer.pgadmin.hosted.stephenhallett.nz {
+        reverse_proxy http://100.74.152.81:5051
+        import cloudflare
+      }
+
       portfolio.hosted.stephenhallett.nz {
         reverse_proxy http://100.74.152.81:3000
         import cloudflare

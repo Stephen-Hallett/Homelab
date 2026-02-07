@@ -8,6 +8,13 @@
     [ (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
+  fileSystems."/mnt/NFS-Storage" = {
+    device = "192.168.1.152:/mnt/Mediastack";
+    fsType = "nfs";
+    options = [ "defaults" "noatime" "vers=3" "_netdev" ];
+    neededForBoot = false;
+  };
+
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ ];
