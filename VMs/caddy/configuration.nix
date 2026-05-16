@@ -17,7 +17,7 @@
   networking.hostName = "caddy";
 
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
 
   environment.systemPackages = [ pkgs.caddy ];
 
@@ -38,8 +38,12 @@
 
       # proxmox
       proxmox.hosted.stephenhallett.nz {
-          reverse_proxy http://100.76.206.4:8006
-          import cloudflare
+          reverse_proxy https://100.76.206.4:8006 {
+              transport http {
+                  tls_insecure_skip_verify
+              }
+          }
+          
       }
 
       # code-server
@@ -160,6 +164,11 @@
 
       mealie.hosted.stephenhallett.nz {
         reverse_proxy http://100.76.206.4:9000
+        import cloudflare
+      }
+
+      homeassistant.hosted.stephenhallett.nz {
+        reverse_proxy http://100.66.104.31:8123
         import cloudflare
       }
     '';

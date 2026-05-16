@@ -13,7 +13,7 @@
   nix-config = {
     bluetooth.enable = true;
     immich.enable = true;
-    jenkins.enable = true;
+    jenkins.enable = false;
     sunshine.enable = true;
     proxmox.enable = true;
     headless.enable = false;
