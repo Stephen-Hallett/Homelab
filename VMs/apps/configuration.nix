@@ -7,6 +7,7 @@
 {
   imports = [
     ./../../Hosts/VM/configuration.nix
+    ./caddy.nix
   ];
 
   nix-config = {

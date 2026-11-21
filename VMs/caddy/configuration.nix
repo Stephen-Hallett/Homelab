@@ -93,12 +93,12 @@
       }
 
       bustimer.hosted.stephenhallett.nz {
-        reverse_proxy http://100.74.152.81:8081
+        reverse_proxy http://100.111.121.51:8081
         import cloudflare
       }
 
       bustimer.pgadmin.hosted.stephenhallett.nz {
-        reverse_proxy http://100.74.152.81:5051
+        reverse_proxy http://100.111.121.51:5051
         import cloudflare
       }
 
@@ -169,6 +169,11 @@
 
       homeassistant.hosted.stephenhallett.nz {
         reverse_proxy http://100.66.104.31:8123
+        import cloudflare
+      }
+
+      japan.hosted.stephenhallett.nz {
+        reverse_proxy http://100.111.121.51:5000
         import cloudflare
       }
     '';
