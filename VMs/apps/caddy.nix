@@ -16,32 +16,25 @@
             hash = "sha256-Gsuo+ripJSgKSYOM9/yl6Kt/6BFCA6BuTDvPdteinAI=";
         };
         extraConfig = ''
-        (cloudflare) {
-            tls {
-                dns cloudflare ${builtins.readFile config.sops.secrets.cloudflare.path}
-            }
+      api.stephenhallett.nz {
+        tls {
+          dns cloudflare ${builtins.readFile config.sops.secrets.cloudflare.path}
         }
 
-        api.hosted.stephenhallett.nz/savings {
-            reverse_proxy http://100.74.152.81:8181
-            import cloudflare
+        handle_path /savings/* {
+          reverse_proxy 100.74.152.81:8181
         }
-
-        api.hosted.stephenhallett.nz/bustimer {
-            reverse_proxy http://100.111.121.51:8081
-            import cloudflare
+        handle_path /bustimer/* {
+          reverse_proxy 100.111.121.51:8081
         }
-
-        api.hosted.stephenhallett.nz/dailytracker {
-            reverse_proxy http://100.111.121.51:8082
-            import cloudflare
+        handle_path /dailytracker/* {
+          reverse_proxy 100.111.121.51:8082
         }
-
-        api.hosted.stephenhallett.nz/calories {
-            reverse_proxy http://100.74.152.81:4000
-            import cloudflare
+        handle_path /calories/* {
+          reverse_proxy 100.74.152.81:4000
         }
-        '';
+      }
+    '';
     };
   };
 }
